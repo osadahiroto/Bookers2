@@ -1,0 +1,40 @@
+
+
+<main>
+        <p id="notice"></p>
+        <div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>User info</h2>
+    <% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    <%= message %>error
+  <% end %>
+<% end %>
+      <%= form_with model:@user, local:true do |f| %>
+      <div>
+        <label>Name</label>
+        <p>
+        <%= f.text_field :name %>
+        </p>
+      </div>
+     <div>
+        <label>Image</label>
+        <p>
+        <%= f.attachment_field :profile_image %>
+        </p>
+      </div>
+      <div>
+        <label>Introduction</label>
+        <p><%= f.text_area :introduction %></p>
+      </div>
+      <div>
+        <%= f.submit "Update User" %>
+      </div>
+      <% end %>
+</form>
+</div>
+</div>
+
+</div>
+</main>
