@@ -1,7 +1,5 @@
 
-
 <%= render 'books/list', user: @user,book: @book_new  %>
-
 
 <div class="col-md-8 offset-md-1">
   <h2>Book detail</h2>
@@ -20,13 +18,13 @@
       <% if @book.favorited_by?(current_user) %>
     <p>
       <%= link_to book_favorites_path(@book), method: :delete, class: "like" do %>
-        ♥<%= @book.favorites.count %> 
+        ♥<%= @book.favorites.count %>
       <% end %>
     </p>
     <% else %>
     <p>
       <%= link_to book_favorites_path(@book), method: :post do %>
-        ♥<%= @book.favorites.count %> 
+        ♥<%= @book.favorites.count %>
       <% end %>
     </p>
   <% end %>
@@ -51,7 +49,8 @@
   <table>
     <tr>
       <td>
-    <%= image_tag('no_image.jpg') %>
+    <%= image_tag('no_image.jpg') %><br>
+    <%= link_to (book_comment.user.name), user_path(book_comment.user) %>
     </td>
         <td>
         <%= book_comment.comment %>
@@ -61,11 +60,11 @@
   <div class="comment-delete">
         <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
   </div>
+
   </td>
   </tr>
-  </table>
-  <%= link_to (book_comment.user.name), user_path(@book.user_id) %>
   <% end %>
+  </table>
   <% end %>
   </div>
   <div class="new-comment">
