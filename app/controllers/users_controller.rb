@@ -3,7 +3,7 @@ before_action :authenticate_user!
 
   def index
     @book = Book.new
-    @books = Book.all
+    @users = User.all
   end
 
   def show
